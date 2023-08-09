@@ -1,18 +1,18 @@
 #' @title Create a radar chart of track features
 #' @param songs - A vector of Spotify track ids
 #' @param vars - A vector of variables returned from get_track_audio_features()
-#' @param colors - A vector of colors
 #' @param authorization - An access_token generated from the get_spotify_access_token() function
 #' @return A radar chart displaying valence, energy, and speechiness, along with any other inputed variables
 #' @examples 
 #' \dontrun{
-#'  create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness", colors = c("#2596BE", "#BC22BF", "#8c880f"))
+#'  create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness")
 #' }
 #' @export
-create_artist_songs_radar_chart <- function(songs, vars = c(), colors = c(), authorization = get_spotify_access_token()){
+create_artist_songs_radar_chart <- function(songs, vars = c(), authorization = get_spotify_access_token()){
   if (length(songs) > 3){
     stop("Please input only 3 or less tracks!")
   }
+  colors = c("#6B8E23", "#89A8E0", "#A291B5")
   create_beautiful_radarchart <- function(data, color = "#00AFBB", 
                                         vlabels = colnames(data), vlcex = 0.7,
                                         caxislabels = NULL, title = NULL, ...){
@@ -50,9 +50,9 @@ create_artist_songs_radar_chart <- function(songs, vars = c(), colors = c(), aut
     min_max <- cbind(min_max, combinations)
   }
 
-  genre_summaries <- purrr::map(songs, ~ get_track_audio_features(.x, authorization = authorization))
+  song_summaries <- purrr::map(songs, ~ get_track_audio_features(.x, authorization = authorization))
 
-  final_summary_df <- dplyr::bind_rows(genre_summaries)
+  final_summary_df <- dplyr::bind_rows(song_summaries)
 
   rownames(final_summary_df) <- songs
 
@@ -70,7 +70,7 @@ create_artist_songs_radar_chart <- function(songs, vars = c(), colors = c(), aut
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),
-    color = colors,
+    color = colors[1:length(songs)],
     vlcex = 1.5
   )
   
@@ -83,7 +83,7 @@ create_artist_songs_radar_chart <- function(songs, vars = c(), colors = c(), aut
                           names_to = "track_names", values_to = "names")
   legend(
     x = "bottom", legend = tracks$names, horiz = TRUE,
-    bty = "n", pch = 20 , col = colors,
+    bty = "n", pch = 20 , col = colors[1:length(songs)],
     text.col = "black", cex = 1
     )
 

@@ -1,18 +1,18 @@
 #' @title Create a radar chart of genre features
 #' @param genres - A vector of Spotify genres
 #' @param vars - A vector of variables returned from get_genre_summary()
-#' @param colors - A vector of colors
 #' @param authorization - An access_token generated from the get_spotify_access_token() function
 #' @return A radar chart displaying valence, energy, and speechiness, along with any other inputed variables
 #' @examples 
 #' \dontrun{
-#'  create_genre_radar_chart(genres = c("hip-hop", "classical", "rock"), vars = c("instrumentalness", "acousticness"), colors = c("#2596BE", "#BC22BF", "#8c880f"))
+#'  create_genre_radar_chart(genres = c("hip-hop", "classical", "rock"), vars = c("instrumentalness", "acousticness"))
 #' }
 #' @export
-create_genre_radar_chart <- function(genres, vars = c(), colors = c(), authorization = get_spotify_access_token()){
+create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spotify_access_token()){
   if (length(genres) > 5){
     stop("Please input only 5 or less genres!")
   }
+  colors = c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
   create_beautiful_radarchart <- function(data, color = "#00AFBB", 
                                         vlabels = colnames(data), vlcex = 0.7,
                                         caxislabels = NULL, title = NULL, ...){
@@ -71,13 +71,13 @@ create_genre_radar_chart <- function(genres, vars = c(), colors = c(), authoriza
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),
-    color = colors,
+    color = colors[1:length(genres)],
     vlcex = 1
   )
   
   legend(
     x = "bottom", legend = rownames(final_summary_df[-c(1,2),]), horiz = TRUE,
-    bty = "n", pch = 20 , col = colors,
+    bty = "n", pch = 20 , col = colors[1:length(genres)],
     text.col = "black", cex = 1.5, pt.cex = 2
     )
 
