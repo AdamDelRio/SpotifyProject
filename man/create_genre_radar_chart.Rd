@@ -7,7 +7,6 @@
 create_genre_radar_chart(
   genres,
   vars = c(),
-  colors = c(),
   authorization = get_spotify_access_token()
 )
 }
@@ -18,10 +17,6 @@ create_genre_radar_chart(
 
 \item{vars}{\itemize{
 \item A vector of variables returned from get_genre_summary()
-}}
-
-\item{colors}{\itemize{
-\item A vector of colors
 }}
 
 \item{authorization}{\itemize{
@@ -36,6 +31,6 @@ Create a radar chart of genre features
 }
 \examples{
 \dontrun{
- create_genre_radar_chart(genres = c("hip-hop", "classical", "rock"), vars = c("instrumentalness", "acousticness"), colors = c("#2596BE", "#BC22BF", "#8c880f"))
+ create_genre_radar_chart(genres = c("hip-hop", "classical", "rock"), vars = c("instrumentalness", "acousticness"))
 }
 }

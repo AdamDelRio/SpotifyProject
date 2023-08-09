@@ -7,7 +7,6 @@
 create_average_artists_radar_chart(
   artists,
   vars = c(),
-  colors = c(),
   authorization = get_spotify_access_token()
 )
 }
@@ -18,10 +17,6 @@ create_average_artists_radar_chart(
 
 \item{vars}{\itemize{
 \item A vector of variables returned from get_artist_summary()
-}}
-
-\item{colors}{\itemize{
-\item A vector of colors
 }}
 
 \item{authorization}{\itemize{
@@ -36,6 +31,6 @@ Create a radar chart of artist features
 }
 \examples{
 \dontrun{
- create_average_artists_radar_chart(artists = c("5me0Irg2ANcsgc93uaYrpb", "7hJcb9fa4alzcOq3EaNPoG", "1ZwdS5xdxEREPySFridCfh", "7B4hKK0S9QYnaoqa9OuwgX", "1P8IfcNKwrkQP5xJWuhaOC"), vars = c("acousticness", "danceability"), colors = c("#2596BE", "#BC22BF", "#eb4034", "#31cc46", "#8c880f"))
+ create_average_artists_radar_chart(artists = c("5me0Irg2ANcsgc93uaYrpb", "7hJcb9fa4alzcOq3EaNPoG", "1ZwdS5xdxEREPySFridCfh", "7B4hKK0S9QYnaoqa9OuwgX", "1P8IfcNKwrkQP5xJWuhaOC"), vars = c("acousticness", "danceability"))
 }
 }

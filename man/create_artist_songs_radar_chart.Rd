@@ -7,7 +7,6 @@
 create_artist_songs_radar_chart(
   songs,
   vars = c(),
-  colors = c(),
   authorization = get_spotify_access_token()
 )
 }
@@ -18,10 +17,6 @@ create_artist_songs_radar_chart(
 
 \item{vars}{\itemize{
 \item A vector of variables returned from get_track_audio_features()
-}}
-
-\item{colors}{\itemize{
-\item A vector of colors
 }}
 
 \item{authorization}{\itemize{
@@ -36,6 +31,6 @@ Create a radar chart of track features
 }
 \examples{
 \dontrun{
- create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness", colors = c("#2596BE", "#BC22BF", "#8c880f"))
+ create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness")
 }
 }
