@@ -22,4 +22,6 @@ Imports:
   magrittr,
   tidyr,
   scales,
-  fmsb
+  fmsb,
+  ggplot2,
+  plotly
