@@ -1,10 +1,34 @@
 Package: SpotifyProject
-Title: What the Package Does (One Line, Title Case)
+Title: R Package For Accessing Spotify API
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+c(
+    person(
+      given = "Adam", 
+      family = "Del Rio", 
+      email = "adamdelrio8523@gmail.com", 
+      role = c("aut", "cre")
+    ),
+    person(
+      given = "Ken", 
+      family = "Xie", 
+      email = "kenxie100@gmail.com", 
+      role = c("aut")
+    ),
+    person(
+      given = "Emily", 
+      family = "Zhu", 
+      email = "emilyz81825@gmail.com", 
+      role = c("aut")
+    ),
+    person(
+      given = "Immanuel", 
+      family = "Williams", 
+      email = "drwilliamsstatcalpoly@gmail.com", 
+      role = c("aut", "cre")
+    )
+)
+Description: An R package utilizing API calls from the Spotify Web API for data science purposes, with visualization examples included.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
