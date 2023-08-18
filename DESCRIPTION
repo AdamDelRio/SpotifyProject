@@ -2,10 +2,10 @@ Package: SpotifyProject
 Title: R Package For Accessing Spotify API
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Adam", family = "Del Rio", email = "adamdelrio8523@gmail.com", role = c("aut", "cre")) +
-    person(given = "Ken", family = "Xie", email = "kenxie100@gmail.com", role = c("aut")) +
-    person(given = "Emily", family = "Zhu", email = "emilyz81825@gmail.com", role = c("aut")) +
-    person(given = "Immanuel", family = "Williams", email = "drwilliamsstatcalpoly@gmail.com", role = c("aut", "cre"))
+    person("Adam", "Del Rio", email = "adamdelrio8523@gmail.com", role = c("aut", "cre")) +
+    person("Ken", "Xie", email = "kenxie100@gmail.com", role = c("aut")) +
+    person("Emily", "Zhu", email = "emilyz81825@gmail.com", role = c("aut")) +
+    person("Immanuel", "Williams", email = "drwilliamsstatcalpoly@gmail.com", role = c("aut", "cre"))
 Description: An R package utilizing API calls from the Spotify Web API for data science purposes, with visualization examples included.
 License: MIT + file LICENSE
 Encoding: UTF-8
