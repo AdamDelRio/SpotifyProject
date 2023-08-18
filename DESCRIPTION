@@ -1,8 +1,7 @@
 Package: SpotifyProject
 Title: R Package For Accessing Spotify API
 Version: 0.0.0.9000
-Authors@R: 
-c(
+Authors@R: c(
     person(
       given = "Adam", 
       family = "Del Rio", 
