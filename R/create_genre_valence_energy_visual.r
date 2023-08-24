@@ -15,7 +15,7 @@ create_genre_valence_energy_visual <- function(genres, sample_sizes = 20, author
     track_ids <- genre_info$track_id  
     track_names <- genre_info$track_name
     artist_name <- genre_info$artist_name
-    audio_features <- purrr::map(track_ids, get_track_audio_features)
+    audio_features <- purrr::map(track_ids, ~ get_track_audio_features(ids = .x))
     
     min_length <- min(length(track_ids), length(track_names), length(audio_features))
     genre_name <- rep(.x, each = min_length) 
