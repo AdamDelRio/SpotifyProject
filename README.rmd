@@ -58,5 +58,5 @@ members <- get_artists_summary(queries = c("Harry Styles", "ZAYN", "Liam Payne",
 order <- members %>%
          dplyr::select(artist_name, danceability_mean) %>% 
          dplyr::arrange(desc(danceability_mean)) %>%
-         kable()
+         kable(format = "markdown")
 ```
