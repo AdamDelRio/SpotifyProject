@@ -4,11 +4,19 @@
 \alias{get_track_beats}
 \title{Search for Spotify track beats information}
 \usage{
-get_track_beats(id, authorization = get_spotify_access_token())
+get_track_beats(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single track name.  Deafualts to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify track id
+\item A single Spotify track id.  Deafualts to NULL.  Only use this or query
 }}
 
 \item{authorization}{\itemize{
@@ -23,6 +31,7 @@ Search for Spotify track beats information
 }
 \examples{
 \dontrun{
-get_track_beats("3w3y8KPTfNeOKPiqUTakBh")
+get_track_beats(id = "3w3y8KPTfNeOKPiqUTakBh")
+get_track_beats(query = "Locked out of Heaven")
 }
 }

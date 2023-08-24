@@ -4,11 +4,19 @@
 \alias{get_track_audio_features}
 \title{Search for Spotify track features}
 \usage{
-get_track_audio_features(ids, authorization = get_spotify_access_token())
+get_track_audio_features(
+  queries = NULL,
+  ids = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{queries}{\itemize{
+\item A vector of track names.  Deafualts to NULL.  Only use this or ids
+}}
+
 \item{ids}{\itemize{
-\item A vector of Spotify track ids
+\item A vector of Spotify track ids.  Deafualts to NULL.  Only use this or queries
 }}
 
 \item{authorization}{\itemize{
@@ -36,6 +44,7 @@ Search for Spotify track features
 }
 \examples{
 \dontrun{
-get_track_audio_features("3w3y8KPTfNeOKPiqUTakBh")
+get_track_audio_features(ids = "3w3y8KPTfNeOKPiqUTakBh")
+get_track_audio_features(queries = c("Locked out of Heaven", "Natalie"))
 }
 }

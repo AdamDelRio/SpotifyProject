@@ -5,14 +5,19 @@
 \title{Create a radar chart of artist features}
 \usage{
 create_average_artists_radar_chart(
-  artists,
+  queries = NULL,
+  artists = NULL,
   vars = c(),
   authorization = get_spotify_access_token()
 )
 }
 \arguments{
+\item{queries}{\itemize{
+\item A vector of artist names.  Deafualts to NULL.  Only use this or ids
+}}
+
 \item{artists}{\itemize{
-\item A vector of Spotify artist ids
+\item A vector of Spotify artist ids.  Deafualts to NULL.  Only use this or queries
 }}
 
 \item{vars}{\itemize{
@@ -32,5 +37,6 @@ Create a radar chart of artist features
 \examples{
 \dontrun{
  create_average_artists_radar_chart(artists = c("5me0Irg2ANcsgc93uaYrpb", "7hJcb9fa4alzcOq3EaNPoG", "1ZwdS5xdxEREPySFridCfh", "7B4hKK0S9QYnaoqa9OuwgX", "1P8IfcNKwrkQP5xJWuhaOC"), vars = c("acousticness", "danceability"))
+ create_average_artists_radar_chart(queries = c("Liam Payne", "ZAYN", "Harry Styles", "Niall Horan", "Louis Tomlinson"), vars = c("danceability", "danceability"))
 }
 }

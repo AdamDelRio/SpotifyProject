@@ -4,13 +4,25 @@
 \alias{get_album_track_features}
 \title{Search for Spotify album track features}
 \usage{
-get_album_track_features(id, authorization = get_spotify_access_token())
+get_album_track_features(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 
-get_album_track_features(id, authorization = get_spotify_access_token())
+get_album_track_features(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single album name.  Deafualts to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify album id
+\item A single Spotify album id.  Deafualts to NULL.  Only use this or query
 }}
 
 \item{authorization}{\itemize{
@@ -54,9 +66,11 @@ Search for Spotify album's track features
 }
 \examples{
 \dontrun{
-get_album_track_features("1uyf3l2d4XYwiEqAb7t7fX")
+get_album_track_features(id = "1uyf3l2d4XYwiEqAb7t7fX")
+get_album_track_features(query = "An Evening With Silk Sonic")
 }
 \dontrun{
-get_album_track_features("58ufpQsJ1DS5kq4hhzQDiI")
+get_album_track_features(id = "58ufpQsJ1DS5kq4hhzQDiI")
+get_album_track_features(query = "An Evening With Silk Sonic")
 }
 }

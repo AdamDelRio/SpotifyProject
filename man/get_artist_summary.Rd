@@ -4,11 +4,19 @@
 \alias{get_artist_summary}
 \title{Search for Spotify artist feature summary}
 \usage{
-get_artist_summary(id, authorization = get_spotify_access_token())
+get_artist_summary(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single artist name.  Defaults to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify artist id
+\item A single Spotify artist id.  Defaults to NULL.  Only use this or id
 }}
 
 \item{authorization}{\itemize{
@@ -34,6 +42,7 @@ Search for Spotify artist feature summary
 }
 \examples{
 \dontrun{
-get_artist_summary("0du5cEVh5yTK9QJze8zA0C")
+get_artist_summary(ids = "0du5cEVh5yTK9QJze8zA0C")
+get_artist_summary(query = "Bruno Mars")
 }
 }

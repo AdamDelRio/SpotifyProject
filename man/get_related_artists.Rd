@@ -4,11 +4,19 @@
 \alias{get_related_artists}
 \title{Search for Spotify related artists}
 \usage{
-get_related_artists(id, authorization = get_spotify_access_token())
+get_related_artists(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single artist name.  Defaults to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify artist id
+\item A single Spotify artist id.  Defaults to NULL.  Only use this or id
 }}
 
 \item{authorization}{\itemize{
@@ -23,6 +31,7 @@ Search for Spotify related artists
 }
 \examples{
 \dontrun{
-get_related_artists("0du5cEVh5yTK9QJze8zA0C")
+get_related_artists(id = "0du5cEVh5yTK9QJze8zA0C")
+get_related_artists(query = "Bruno Mars")
 }
 }

@@ -16,7 +16,7 @@ create_violin_plot_genre_danceability(
 }}
 
 \item{limit}{\itemize{
-\item Number of songs wanted to return.  Valid if between 1 and 50.  Defaults to 20
+\item Optional.  Number of songs wanted to return.  Valid if between 1 and 50.  Defaults to 20
 }}
 
 \item{authorization}{\itemize{

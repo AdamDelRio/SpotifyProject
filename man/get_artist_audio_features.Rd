@@ -4,11 +4,19 @@
 \alias{get_artist_audio_features}
 \title{Search for Spotify artist audio feature information}
 \usage{
-get_artist_audio_features(id, authorization = get_spotify_access_token())
+get_artist_audio_features(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single artist name.  Defaults to NULL.  Only put this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify artist id
+\item A single Spotify artist id.  Defaults to NULL.  Only put this or query
 }}
 
 \item{authorization}{\itemize{
@@ -33,6 +41,7 @@ Search for Spotify artist audio feature information
 }
 \examples{
 \dontrun{
-get_artist_audio_features("0du5cEVh5yTK9QJze8zA0C")
+get_artist_audio_features(id = "0du5cEVh5yTK9QJze8zA0C")
+get_artist_audio_features(query = "Bruno Mars")
 }
 }

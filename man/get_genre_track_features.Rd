@@ -4,11 +4,19 @@
 \alias{get_genre_track_features}
 \title{Search for Spotify track features of a specific genre}
 \usage{
-get_genre_track_features(genre, authorization = get_spotify_access_token())
+get_genre_track_features(
+  genre,
+  limit = 20,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{genre}{\itemize{
 \item A string of a genre
+}}
+
+\item{limit}{\itemize{
+\item Optional.  Number of tracks wanted to return.  Valid if between 1 and 50.  Defaults to 20
 }}
 
 \item{authorization}{\itemize{

@@ -4,11 +4,19 @@
 \alias{get_tracks}
 \title{Search for Spotify track information}
 \usage{
-get_tracks(ids, authorization = get_spotify_access_token())
+get_tracks(
+  queries = NULL,
+  ids = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{queries}{\itemize{
+\item A vector of track names.  Deafualts to NULL.  Only use this or ids
+}}
+
 \item{ids}{\itemize{
-\item A vector of Spotify track ids
+\item A vector of Spotify track ids.  Deafualts to NULL.  Only use this or queries
 }}
 
 \item{authorization}{\itemize{
@@ -23,7 +31,8 @@ Search for Spotify track information
 }
 \examples{
 \dontrun{
-get_tracks("3G5iN5QBqMeXx3uZPy8tgB")
-get_tracks(c("3G5iN5QBqMeXx3uZPy8tgB", "3w3y8KPTfNeOKPiqUTakBh"))
+get_tracks(ids = "3G5iN5QBqMeXx3uZPy8tgB")
+get_tracks(ids = c("3G5iN5QBqMeXx3uZPy8tgB", "3w3y8KPTfNeOKPiqUTakBh"))
+get_tracks(queries = c("Locked out of Heaven", "When I Was Your Man"))
 }
 }

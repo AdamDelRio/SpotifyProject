@@ -5,15 +5,20 @@
 \title{Search for Spotify album's tracks}
 \usage{
 get_albums_tracks(
-  ids,
+  queries = NULL,
+  ids = NULL,
   limit = 20,
   offset = 0,
   authorization = get_spotify_access_token()
 )
 }
 \arguments{
+\item{queries}{\itemize{
+\item A vector of album names.  Deafualts to NULL.  Only use this or ids
+}}
+
 \item{ids}{\itemize{
-\item A vector of Spotify album ids
+\item A vector of Spotify album ids.  Deafualts to NULL.  Only use this or queries
 }}
 
 \item{limit}{\itemize{
@@ -36,7 +41,8 @@ Search for Spotify album's tracks
 }
 \examples{
 \dontrun{
-get_albums_tracks(c("4VZ7jhV0wHpoNPCB7Vmiml", "58ufpQsJ1DS5kq4hhzQDiI"))
-get_albums_tracks("4VZ7jhV0wHpoNPCB7Vmiml", limit = 50, offset = 2)
+get_albums_tracks(ids = c("4VZ7jhV0wHpoNPCB7Vmiml", "58ufpQsJ1DS5kq4hhzQDiI"))
+get_albums_tracks(ids = "4VZ7jhV0wHpoNPCB7Vmiml", limit = 50, offset = 2)
+get_albums_tracks(queries = "An Evening With Silk Sonic")
 }
 }

@@ -4,11 +4,19 @@
 \alias{get_artists_summary}
 \title{Search for Spotify artists feature summary}
 \usage{
-get_artists_summary(ids, authorization = get_spotify_access_token())
+get_artists_summary(
+  queries = NULL,
+  ids = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{queries}{\itemize{
+\item A String vector of artist names, taken from the search_spotify() function.  Defaults to NULL.  Only use this or ids
+}}
+
 \item{ids}{\itemize{
-\item A vector of Spotify artist ids
+\item A vector of Spotify artist ids.  Defaults to NULL.  Only use this or queries
 }}
 
 \item{authorization}{\itemize{
@@ -34,6 +42,7 @@ Search for Spotify artists feature summary
 }
 \examples{
 \dontrun{
-get_artists_summary(c("0du5cEVh5yTK9QJze8zA0C", "6PvvGcCY2XtUcSRld1Wilr"))
+get_artists_summary(ids = c("0du5cEVh5yTK9QJze8zA0C", "6PvvGcCY2XtUcSRld1Wilr"))
+get_artists_summary(queries = c("Bruno Mars", "Anderson .Paak"))
 }
 }

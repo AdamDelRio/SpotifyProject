@@ -4,11 +4,19 @@
 \alias{get_artist_top_tracks}
 \title{Search for Spotify artist's top tracks}
 \usage{
-get_artist_top_tracks(id, authorization = get_spotify_access_token())
+get_artist_top_tracks(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single artist name.  Deafualts to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify artist id
+\item A single Spotify artist id.  Deafualts to NULL.  Only use this or query
 }}
 
 \item{authorization}{\itemize{
@@ -23,6 +31,7 @@ Search for Spotify artist's top tracks
 }
 \examples{
 \dontrun{
-get_artist_top_tracks("0du5cEVh5yTK9QJze8zA0C")
+get_artist_top_tracks(id = "0du5cEVh5yTK9QJze8zA0C")
+get_artist_top_tracks(query = "Bruno Mars")
 }
 }

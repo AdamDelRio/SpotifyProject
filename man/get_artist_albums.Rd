@@ -5,15 +5,20 @@
 \title{Search for Spotify artist's albums}
 \usage{
 get_artist_albums(
-  id,
+  query = NULL,
+  id = NULL,
   limit = 20,
   offset = 0,
   authorization = get_spotify_access_token()
 )
 }
 \arguments{
+\item{query}{\itemize{
+\item A single of artist name, taken from the search_spotify() function.  Defaults to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify artist id
+\item A single Spotify artist id.  Defaults to NULL.  Only use this or query
 }}
 
 \item{limit}{\itemize{
@@ -36,7 +41,8 @@ Search for Spotify artist's albums
 }
 \examples{
 \dontrun{
-get_artist_albums("0du5cEVh5yTK9QJze8zA0C")
-get_artist_albums("0du5cEVh5yTK9QJze8zA0C", limit = 50, offset = 2)
+get_artist_albums(id = "0du5cEVh5yTK9QJze8zA0C")
+get_artist_albums(id = "0du5cEVh5yTK9QJze8zA0C", limit = 50, offset = 2)
+get_artist_albums(query = "Bruno Mars", limit = 44)
 }
 }

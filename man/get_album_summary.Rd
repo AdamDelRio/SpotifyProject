@@ -4,11 +4,19 @@
 \alias{get_album_summary}
 \title{Search for album's feature summary}
 \usage{
-get_album_summary(id, authorization = get_spotify_access_token())
+get_album_summary(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single of album name, taken from the search_spotify() function.  Defaults to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify album id
+\item A single Spotify album id.  Defaults to NULL.  Only use this or query
 }}
 
 \item{authorization}{\itemize{
@@ -34,6 +42,7 @@ Search for album's feature summary
 }
 \examples{
 \dontrun{
-get_album_summary("1uyf3l2d4XYwiEqAb7t7fX")
+get_album_summary(id = "1uyf3l2d4XYwiEqAb7t7fX")
+get_album_summary(query = "An Evening With Silk Sonic")
 }
 }

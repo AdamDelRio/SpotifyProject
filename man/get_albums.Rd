@@ -4,11 +4,19 @@
 \alias{get_albums}
 \title{Search for Spotify album information}
 \usage{
-get_albums(ids, authorization = get_spotify_access_token())
+get_albums(
+  queries = NULL,
+  ids = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{queries}{\itemize{
+\item A String vector of album names, taken from the search_spotify() function.  Defaults to NULL.  Only use this or ids
+}}
+
 \item{ids}{\itemize{
-\item A vector of Spotify album ids
+\item A vector of Spotify album ids.  Defaults to NULL.  Only use this or queries
 }}
 
 \item{authorization}{\itemize{
@@ -23,7 +31,8 @@ Search for Spotify album information
 }
 \examples{
 \dontrun{
-get_albums("1uyf3l2d4XYwiEqAb7t7fX")
-get_albums(c("1uyf3l2d4XYwiEqAb7t7fX", "58ufpQsJ1DS5kq4hhzQDiI"))
+get_albums(ids = "1uyf3l2d4XYwiEqAb7t7fX")
+get_albums(ids = c("1uyf3l2d4XYwiEqAb7t7fX", "58ufpQsJ1DS5kq4hhzQDiI"))
+get_albums(queries = c("An Evening With Silk Sonic", "To Pimp A Butterfly"))
 }
 }

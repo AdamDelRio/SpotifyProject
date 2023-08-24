@@ -4,11 +4,19 @@
 \alias{get_track_analysis}
 \title{Search for Spotify track analysis}
 \usage{
-get_track_analysis(id, authorization = get_spotify_access_token())
+get_track_analysis(
+  query = NULL,
+  id = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
+\item{query}{\itemize{
+\item A single track name.  Deafualts to NULL.  Only use this or id
+}}
+
 \item{id}{\itemize{
-\item A single Spotify track id
+\item A single Spotify track id.  Deafualts to NULL.  Only use this or query
 }}
 
 \item{authorization}{\itemize{
@@ -23,6 +31,7 @@ Search for Spotify track analysis
 }
 \examples{
 \dontrun{
-get_track_analysis("3w3y8KPTfNeOKPiqUTakBh")
+get_track_analysis(id = "3w3y8KPTfNeOKPiqUTakBh")
+get_track_analysis(query = "Locked out of Heaven")
 }
 }

@@ -5,14 +5,19 @@
 \title{Create a radar chart of track features}
 \usage{
 create_artist_songs_radar_chart(
-  songs,
+  queries = NULL,
+  songs = NULL,
   vars = c(),
   authorization = get_spotify_access_token()
 )
 }
 \arguments{
+\item{queries}{\itemize{
+\item A vector of track names.  Deafualts to NULL.  Only use this or ids
+}}
+
 \item{songs}{\itemize{
-\item A vector of Spotify track ids
+\item A vector of Spotify track ids.  Deafualts to NULL.  Only use this or queries
 }}
 
 \item{vars}{\itemize{
@@ -32,5 +37,6 @@ Create a radar chart of track features
 \examples{
 \dontrun{
  create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness")
+ create_artist_songs_radar_chart(queries = c("Natalie", "When I Was Your Man"), vars = c("liveness", "danceability"))
 }
 }

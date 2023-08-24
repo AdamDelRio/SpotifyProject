@@ -5,13 +5,18 @@
 \title{Create a violin plot based on an artist's tracks}
 \usage{
 create_violin_plot_artist_danceability(
-  artist_ids,
+  queries = NULL,
+  artist_ids = NULL,
   authorization = get_spotify_access_token()
 )
 }
 \arguments{
+\item{queries}{\itemize{
+\item A String vector of artist names, taken from the search_spotify() function.  Defaults to NULL.  Only use this or ids
+}}
+
 \item{artist_ids}{\itemize{
-\item A vector of Spotify artist ids
+\item A vector of Spotify artist ids.  Defaults to NULL.  Only use this or queries
 }}
 
 \item{authorization}{\itemize{
@@ -26,6 +31,7 @@ Create a violin plot based on an artist's tracks
 }
 \examples{
 \dontrun{
- create_violin_plot_artist_danceability("0du5cEVh5yTK9QJze8zA0C")
+ create_violin_plot_artist_danceability(artist_ids = "0du5cEVh5yTK9QJze8zA0C")
+ create_violin_plot_artist_danceability(queries = c("Bruno Mars", "Anderson .Paak"))
 }
 }
