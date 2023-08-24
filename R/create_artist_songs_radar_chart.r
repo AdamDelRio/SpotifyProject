@@ -1,15 +1,17 @@
 #' @title Create a radar chart of track features
-#' @param songs - A vector of Spotify track ids
+#' @param queries - A vector of track names.  Deafualts to NULL.  Only use this or ids
+#' @param songs - A vector of Spotify track ids.  Deafualts to NULL.  Only use this or queries
 #' @param vars - A vector of variables returned from get_track_audio_features()
 #' @param authorization - An access_token generated from the get_spotify_access_token() function
 #' @return A radar chart displaying valence, energy, and speechiness, along with any other inputed variables
 #' @examples 
 #' \dontrun{
 #'  create_artist_songs_radar_chart(songs = c("6YbhspuOar1D9WSSnfe7ds", "5Tbpp3OLLClPJF8t1DmrFD", "2NBQmPrOEEjA8VbeWOQGxO"), vars = "liveness")
+#'  create_artist_songs_radar_chart(queries = c("Natalie", "When I Was Your Man"), vars = c("liveness", "danceability"))
 #' }
 #' @export
-create_artist_songs_radar_chart <- function(songs, vars = c(), authorization = get_spotify_access_token()){
-  if (length(songs) > 3){
+create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars = c(), authorization = get_spotify_access_token()){
+  if (length(songs || queries) > 3){
     stop("Please input only 3 or less tracks!")
   }
   colors = c("#6B8E23", "#89A8E0", "#A291B5")
@@ -49,8 +51,11 @@ create_artist_songs_radar_chart <- function(songs, vars = c(), authorization = g
 
     min_max <- cbind(min_max, combinations)
   }
-
-  song_summaries <- purrr::map(songs, ~ get_track_audio_features(.x, authorization = authorization))
+  if(!is.null(queries)){
+    song_summaries <- purrr::map(queries, ~ get_track_audio_features(queries = .x, authorization = authorization))
+  } else{
+    song_summaries <- purrr::map(songs, ~ get_track_audio_features(ids = .x, authorization = authorization))
+  }
 
   final_summary_df <- dplyr::bind_rows(song_summaries)
 
@@ -74,7 +79,7 @@ create_artist_songs_radar_chart <- function(songs, vars = c(), authorization = g
     vlcex = 1.5
   )
   
-  tracks <- purrr::map(songs, get_tracks) %>% 
+  tracks <- get_tracks(queries = queries, ids = songs) %>% 
     as.data.frame() %>% 
     dplyr::select(
         dplyr::starts_with("track_name")

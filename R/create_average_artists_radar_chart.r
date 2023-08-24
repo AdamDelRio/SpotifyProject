@@ -1,15 +1,17 @@
 #' @title Create a radar chart of artist features
-#' @param artists - A vector of Spotify artist ids
+#' @param queries - A vector of artist names.  Deafualts to NULL.  Only use this or ids
+#' @param artists - A vector of Spotify artist ids.  Deafualts to NULL.  Only use this or queries
 #' @param vars - A vector of variables returned from get_artist_summary()
 #' @param authorization - An access_token generated from the get_spotify_access_token() function
 #' @return A radar chart displaying valence, energy, and speechiness, along with any other inputed variables
 #' @examples 
 #' \dontrun{
 #'  create_average_artists_radar_chart(artists = c("5me0Irg2ANcsgc93uaYrpb", "7hJcb9fa4alzcOq3EaNPoG", "1ZwdS5xdxEREPySFridCfh", "7B4hKK0S9QYnaoqa9OuwgX", "1P8IfcNKwrkQP5xJWuhaOC"), vars = c("acousticness", "danceability"))
+#'  create_average_artists_radar_chart(queries = c("Liam Payne", "ZAYN", "Harry Styles", "Niall Horan", "Louis Tomlinson"), vars = c("danceability", "danceability"))
 #' }
 #' @export
-create_average_artists_radar_chart <- function(artists, vars = c(), authorization = get_spotify_access_token()){
-  if (length(artists) > 5){
+create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, vars = c(), authorization = get_spotify_access_token()){
+  if (length(artists) > 5 || length(queries) > 5){
     stop("Please input only 5 or less artists!")
   }
   colors = c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
@@ -51,7 +53,11 @@ create_average_artists_radar_chart <- function(artists, vars = c(), authorizatio
     min_max <- cbind(min_max, combinations)
   }
 
-  artist_summaries <- purrr::map(artists, ~ get_artist_summary(.x, authorization = authorization))
+  if(!is.null(queries)){
+    artist_summaries <- purrr::map(queries, ~ get_artist_summary(query = .x, authorization = authorization))
+  } else{
+    artist_summaries <- purrr::map(artists, ~ get_artist_summary(id = .x, authorization = authorization))
+  }
 
   final_summary_df <- dplyr::bind_rows(artist_summaries)
 
@@ -75,7 +81,7 @@ create_average_artists_radar_chart <- function(artists, vars = c(), authorizatio
     vlcex = 1.5
   )
   
-  artists <- purrr::map(artists, get_artists) %>% 
+  artists <- get_artists(queries = queries, ids = artists) %>% 
     as.data.frame() %>% 
     dplyr::select(
         dplyr::starts_with("artist_name")
