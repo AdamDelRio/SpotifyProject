@@ -53,7 +53,7 @@ library(knitr)
 library(tidyverse)
 ```
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, results = 'asis'}
 members <- get_artists_summary(queries = c("Harry Styles", "ZAYN", "Liam Payne", "Niall Horan", "Louis Tomlinson"))
 order <- members %>%
          dplyr::select(artist_name, danceability_mean) %>% 
