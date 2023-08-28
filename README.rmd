@@ -47,6 +47,7 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = "b582eccc019f4ab4aea3fdda49c0fb69")
 ```
 
 ### Which One Direction Member Is The Most Danceable?
+
 ```{r load_packages, message=FALSE, warning=FALSE, results="hide"}
 library(SpotifyProject)
 library(knitr)
@@ -55,8 +56,47 @@ library(tidyverse)
 
 ```{r, message = FALSE, warning = FALSE, results = 'asis'}
 members <- get_artists_summary(queries = c("Harry Styles", "ZAYN", "Liam Payne", "Niall Horan", "Louis Tomlinson"))
-order <- members %>%
-         dplyr::select(artist_name, danceability_mean) %>% 
-         dplyr::arrange(desc(danceability_mean)) %>%
-         kable(format = "markdown")
+members %>%
+  dplyr::select(artist_name, danceability_mean) %>% 
+  dplyr::arrange(desc(danceability_mean)) %>%
+  dplyr::rename("Artist Name" = artist_name,
+                "Mean Danceability" = danceability_mean) %>%
+  kable(format = "markdown")
+```
+
+### How Loud Does "Bohemian Rhapsody" Get Throughout The Song?
+
+```{r, message = FALSE, warning = FALSE, results = 'asis'}
+rhap <- get_track_sections(query = "Bohemian Rhapsody")
+rhap %>%
+  dplyr::select(track_name,
+                start,
+                loudness) %>% 
+  ggplot2::ggplot(mapping = aes(x = start, y = loudness)) + 
+  ggplot2::geom_line() + 
+  ggplot2::theme_bw() + 
+  ggplot2::labs(title = "Loudness of Bohemian Rhapsody Over Time",
+                subtitle = "Loudness (dB)",
+                x = "Start Time of Interval (s)",
+                y = "")
+```
+
+### Of The Top Hip-Hop Artists, Which 5 Have The Most Followers?
+
+```{r, message = FALSE, warning = FALSE, results = 'asis'}
+hop <- get_genre_artists(genre = "hip-hop")
+hop %>% 
+  dplyr::select(artist_name, 
+                followers_total) %>% 
+  dplyr::arrange(desc(followers_total)) %>% 
+  dplyr::slice_head(n = 5) %>% 
+  dplyr::rename("Artist Name" = artist_name, 
+                "Total Followers" = followers_total) %>% 
+  knitr::kable(format = "markdown")
+```
+
+### How Does The Average Valence, Energy, Speechiness, Danceability, And Acousticness Of Kendrick Lamar Compare To Ed Sheeran
+
+```{r, message = FALSE, warning = FALSE, results = 'asis'}
+create_average_artists_radar_chart(queries = c("Kendrick Lamar", "Ed Sheeran"), vars = c("danceability", "acousticness"))
 ```
