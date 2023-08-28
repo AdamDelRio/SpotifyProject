@@ -12,7 +12,8 @@ create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spo
   if (length(genres) > 5){
     stop("Please input only 5 or less genres!")
   }
-  colors = c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
+  colors <- c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
+  color_palette <- colors[1:length(genres)]
   create_beautiful_radarchart <- function(data, color = "#00AFBB", 
                                         vlabels = colnames(data), vlcex = 0.7,
                                         caxislabels = NULL, title = NULL, ...){
@@ -71,13 +72,13 @@ create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spo
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),
-    color = colors[1:length(genres)],
+    color = color_palette,
     vlcex = 1
   )
   
   legend(
     x = "bottom", legend = rownames(final_summary_df[-c(1,2),]), horiz = TRUE,
-    bty = "n", pch = 20 , col = colors[1:length(genres)],
+    bty = "n", pch = 20 , col = color_palette,
     text.col = "black", cex = 1.5, pt.cex = 2
     )
 

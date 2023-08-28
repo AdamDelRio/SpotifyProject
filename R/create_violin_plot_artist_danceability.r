@@ -44,7 +44,8 @@ create_violin_plot_artist_danceability <- function(queries = NULL, artist_ids = 
         gg <- ggplot2::ggplot(df_tracks, ggplot2::aes(x=artist, y=danceability))  + 
             ggplot2::geom_violin(ggplot2::aes(fill = artist)) + 
             ggplot2::labs(title = "Danceability of Artist Top Tracks", x = "Artist", y = "Danceability", fill = "Artist") + 
-            ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5))
+            ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) + 
+                ggplot2::stat_summary(fun.data = "mean_cl_normal", geom = "point", shape = 20, size = 4, color = "red")
     } 
     else {
         gg <- ggplot2::ggplot(df_tracks, ggplot2::aes(x=artist, y=danceability))  + 
@@ -53,7 +54,8 @@ create_violin_plot_artist_danceability <- function(queries = NULL, artist_ids = 
             ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), 
                     axis.text.x = ggplot2::element_blank(), 
                     axis.ticks.x = ggplot2::element_blank() 
-                    )
+                    ) + 
+                ggplot2::stat_summary(fun.data = "mean_cl_normal", geom = "point", shape = 20, size = 4, color = "red")
     }
     plotly::ggplotly(gg)
 }

@@ -14,7 +14,12 @@ create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, v
   if (length(artists) > 5 || length(queries) > 5){
     stop("Please input only 5 or less artists!")
   }
-  colors = c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
+  colors <- c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
+  if(!is.null(queries)){
+    color_palette <- colors[1:length(queries)]
+  } else{
+    color_palette <- colors[1:length(artists)]
+  }
   create_beautiful_radarchart <- function(data, color = "#00AFBB", 
                                         vlabels = colnames(data), vlcex = 0.7,
                                         caxislabels = NULL, title = NULL, ...){
@@ -77,7 +82,7 @@ create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, v
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),
-    color = colors[1:length(artists)],
+    color = color_palette,
     vlcex = 1.5
   )
   
@@ -90,7 +95,7 @@ create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, v
                           names_to = "track_names", values_to = "names")
   legend(
     x = "bottom", legend = artists$names, horiz = TRUE,
-    bty = "n", pch = 20 , col = colors[1:length(artists)],
+    bty = "n", pch = 20 , col = color_palette,
     text.col = "black", cex = 1
     )
 

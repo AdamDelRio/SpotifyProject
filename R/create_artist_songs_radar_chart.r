@@ -11,10 +11,15 @@
 #' }
 #' @export
 create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars = c(), authorization = get_spotify_access_token()){
-  if (length(songs || queries) > 3){
+  if (length(songs) > 3 || length(queries) > 3){
     stop("Please input only 3 or less tracks!")
   }
-  colors = c("#6B8E23", "#89A8E0", "#A291B5")
+  colors <- c("#6B8E23", "#89A8E0", "#A291B5")
+  if(!is.null(queries)){
+    color_palette <- colors[1:length(queries)]
+  } else{
+    color_palette <- colors[1:length(songs)]
+  }
   create_beautiful_radarchart <- function(data, color = "#00AFBB", 
                                         vlabels = colnames(data), vlcex = 0.7,
                                         caxislabels = NULL, title = NULL, ...){
@@ -75,7 +80,7 @@ create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars =
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),
-    color = colors[1:length(songs)],
+    color = color_palette,
     vlcex = 1.5
   )
   
@@ -88,7 +93,7 @@ create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars =
                           names_to = "track_names", values_to = "names")
   legend(
     x = "bottom", legend = tracks$names, horiz = TRUE,
-    bty = "n", pch = 20 , col = colors[1:length(songs)],
+    bty = "n", pch = 20 , col = color_palette,
     text.col = "black", cex = 1
     )
 
