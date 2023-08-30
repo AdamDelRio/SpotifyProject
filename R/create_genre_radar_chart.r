@@ -32,10 +32,10 @@ create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spo
   }
 
   min_max <- data.frame(
-    row.names = c("min", "max"),
-    valence_mean = c(0, 1),
-    energy_mean = c(0, 1),
-    speechiness_mean = c(0, 1)
+    row.names = c("max", "min"),
+    valence_mean = c(1, 0),
+    energy_mean = c(1, 0),
+    speechiness_mean = c(1, 0)
   )
 
   if (length(vars) > 0){
@@ -68,7 +68,7 @@ create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spo
                       
   final_summary_df <- rbind(min_max, final_summary_df)  
   
-  op <- par(mar = c(0, 0, 0, 0))
+  op <- par(mar = c(1, 0, 0, 0))
   
   create_beautiful_radarchart(
     data = final_summary_df, caxislabels = c(0, 0.25, 0.50, 0.75, 1),

@@ -38,10 +38,10 @@ create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, v
   }
 
   min_max <- data.frame(
-    row.names = c("min", "max"),
-    valence_mean = c(0, 1),
-    energy_mean = c(0, 1),
-    speechiness_mean = c(0, 1)
+    row.names = c("max", "min"),
+    valence_mean = c(1, 0),
+    energy_mean = c(1, 0),
+    speechiness_mean = c(1, 0)
   )
 
   if (length(vars) > 0){

@@ -153,7 +153,7 @@ get_genre_artists <- function(genre, limit = 20, offset = 0, authorization = get
 get_genre_summary <- function(genre, authorization = get_spotify_access_token()){
     tracks <- get_genre_tracks(genre, authorization = authorization)
 
-    features <- get_track_audio_features(tracks$track_id, authorization = authorization)
+    features <- get_track_audio_features(ids = tracks$track_id, authorization = authorization)
 
     summary <- features %>%
                dplyr::select(danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration_ms, mode) %>%
@@ -192,7 +192,7 @@ get_genre_summary <- function(genre, authorization = get_spotify_access_token())
 get_genre_track_features <- function(genre, limit = 20, authorization = get_spotify_access_token()){
     tracks <- get_genre_tracks(genre, limit = limit, authorization = authorization)
 
-    features <- get_track_audio_features(tracks$track_id, authorization = authorization)
+    features <- get_track_audio_features(ids = tracks$track_id, authorization = authorization)
 
     result <- dplyr::left_join(tracks, features, by = "track_id") %>%
               dplyr::select(

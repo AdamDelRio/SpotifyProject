@@ -38,10 +38,10 @@ create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars =
   }
 
   min_max <- data.frame(
-    row.names = c("min", "max"),
-    valence = c(0, 1),
-    energy = c(0, 1),
-    speechiness = c(0, 1)
+    row.names = c("max", "min"),
+    valence = c(1, 0),
+    energy = c(1, 0),
+    speechiness = c(1, 0)
   )
 
   if (length(vars) > 0){
