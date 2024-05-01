@@ -79,7 +79,7 @@ create_genre_radar_chart <- function(genres, vars = c(), authorization = get_spo
   legend(
     x = "bottom", legend = rownames(final_summary_df[-c(1,2),]), horiz = TRUE,
     bty = "n", pch = 20 , col = color_palette,
-    text.col = "black", cex = 2, pt.cex = 2
+    text.col = "black", cex = 1.75, pt.cex = 2
     )
 
   par(op)

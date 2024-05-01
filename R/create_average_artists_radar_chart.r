@@ -96,7 +96,7 @@ create_average_artists_radar_chart <- function(queries = NULL, artists = NULL, v
   legend(
     x = "bottom", legend = artists$names, horiz = TRUE,
     bty = "n", pch = 20 , col = color_palette,
-    text.col = "black", cex = 2
+    text.col = "black", cex = 1.75
     )
 
   par(op)
