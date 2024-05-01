@@ -5,9 +5,9 @@
 #' @return A valence and energy plot which plots the top tracks from multiple artists
 #' @examples 
 #' \dontrun{
-#'  artist_track_valence_energy_visual(artist_ids = "0du5cEVh5yTK9QJze8zA0C")
-#'  artist_track_valence_energy_visual(artist_ids = c("0du5cEVh5yTK9QJze8zA0C", "73sIBHcqh3Z3NyqHKZ7FOL"))
-#'  artist_track_valence_energy_visual(artist_ids = c("Bruno Mars", "Anderson .Paak"))
+#'  create_artist_track_valence_energy_visual(artist_ids = "0du5cEVh5yTK9QJze8zA0C")
+#'  create_artist_track_valence_energy_visual(artist_ids = c("0du5cEVh5yTK9QJze8zA0C", "73sIBHcqh3Z3NyqHKZ7FOL"))
+#'  create_artist_track_valence_energy_visual(queries = c("Bruno Mars", "Anderson .Paak"))
 #' }
 #' @export
 create_artist_track_valence_energy_visual <- function(queries = NULL, artist_ids = NULL, authorization = get_spotify_access_token()) {
@@ -103,9 +103,9 @@ ggplot2::theme(
   legend.text = ggplot2::element_text(size = 10),
   legend.position = "bottom",
   legend.direction = "vertical"
-)
+) + ggplot2::ggtitle("Artist Valence-Energy Visualization")
 
-p2_interactive <- plotly::ggplotly(p2)
+p2_interactive <- plotly::ggplotly(p2) 
 
 
 p2_interactive

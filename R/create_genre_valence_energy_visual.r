@@ -5,8 +5,8 @@
 #' @return A valence and energy plot taking in a set number of genres
 #' @examples 
 #' \dontrun{
-#'  genre_valence_energy_visual(c("hip-hop", "rap", "jazz"))
-#'  genre_valence_energy_visual("rock", sample_sizes = 22)
+#'  create_genre_valence_energy_visual(c("hip-hop", "rap", "jazz"))
+#'  create_genre_valence_energy_visual("rock", sample_sizes = 22)
 #' }
 #' @export
 create_genre_valence_energy_visual <- function(genres, sample_sizes = 20, authorization = get_spotify_access_token()) {
