@@ -34,7 +34,7 @@ create_artist_album_valence_energy_visual <- function(query = NULL, artist_id = 
         energy_mean = energy_means,
         stringsAsFactors = FALSE
     )
-  colors = c("#6B8E23", "#89A8E0", "#A291B5", "#BCCC9A", "#D3D3D3")
+  colors = c("#FF3131", "green", "#7a05ff", "#f2ff00", "#fffefe")
 
   if (length(artist_data$album_name) < length(colors)) {
   colors <- colors[1:length(artist_data$album_name)]
