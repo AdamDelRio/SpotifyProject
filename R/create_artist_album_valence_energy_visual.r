@@ -94,11 +94,10 @@ create_artist_album_valence_energy_visual <- function(query = NULL, artist_id = 
       axis.text = ggplot2::element_text(size = 7, face = "bold"),
       plot.title = ggplot2::element_text(size = 15, face = "bold", hjust = 0.5, margin = margin(b = 20)),
       plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 13, face = "bold"),
-      legend.text = ggplot2::element_text(size = 10),
+      legend.text = ggplot2::element_text(size = 20),
       legend.position = "bottom",
       legend.direction = "vertical",
-      plot.margin = ggplot2::margin(t = 50),
-      legend.text = ggplot2::element_text(size = 20)
+      plot.margin = ggplot2::margin(t = 50)
     ) +
     ggplot2::ggtitle(paste("Album Valence-Energy Visualization\nfor", artist_name)) +
     ggplot2::theme(plot.title.position = "plot"))

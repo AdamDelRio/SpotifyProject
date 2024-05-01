@@ -100,7 +100,7 @@ create_artist_track_valence_energy_visual <- function(queries = NULL, artist_ids
 ggplot2::theme(
   plot.title = ggplot2::element_text(hjust = 0.5, size = 17, face = "bold"),
   plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 13, face = "bold"),
-  legend.text = ggplot2::element_text(size = 10),
+  legend.text = ggplot2::element_text(size = 20),
   legend.position = "bottom",
   legend.direction = "vertical"
 ) + ggplot2::ggtitle("Artist Valence-Energy Visualization")

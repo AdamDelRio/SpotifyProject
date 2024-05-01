@@ -86,7 +86,7 @@ create_genre_valence_energy_visual <- function(genres, sample_sizes = 20, author
   ggplot2::theme(
     plot.title = ggplot2::element_text(hjust = 0.5, size = 17, face = "bold"),
     plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 13, face = "bold"),
-    legend.text = ggplot2::element_text(size = 10),
+    legend.text = ggplot2::element_text(size = 20),
     legend.position = "bottom",  
     legend.direction = "horizontal",
     plot.margin = ggplot2::margin(t = 40)

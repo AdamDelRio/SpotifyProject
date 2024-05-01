@@ -94,7 +94,7 @@ create_artist_songs_radar_chart <- function(queries = NULL, songs = NULL, vars =
   legend(
     x = "bottom", legend = tracks$names, horiz = TRUE,
     bty = "n", pch = 20 , col = color_palette,
-    text.col = "black", cex = 1
+    text.col = "black", cex = 2
     )
 
   par(op)

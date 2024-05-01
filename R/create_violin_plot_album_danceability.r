@@ -30,7 +30,8 @@ create_violin_plot_album_danceability <- function(query = NULL, artist_id = NULL
                 ggplot2::theme_bw() +
                 ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), 
                       axis.text.x = ggplot2::element_blank(), 
-                      axis.ticks.x = ggplot2::element_blank()
+                      axis.ticks.x = ggplot2::element_blank(),
+                    legend.text = ggplot2::element_text(size = 20)
                       ) + 
                 ggplot2::stat_summary(fun.data = "mean_cl_normal", geom = "point", shape = 20, size = 4, color = "red")
       } else {
@@ -39,7 +40,8 @@ create_violin_plot_album_danceability <- function(query = NULL, artist_id = NULL
                 # can use sprintf or paste; equivalent of {} for var in string;
                 ggplot2::labs(title = sprintf("Danceability of %s's Albums", df_artist$artist_name[1]), x = "Album", y = "Danceability", fill = "Album") +
                 ggplot2::theme_bw() + 
-                ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) + 
+                ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5),
+                    legend.text = ggplot2::element_text(size = 20)) + 
                 ggplot2::stat_summary(fun.data = "mean_cl_normal", geom = "point", shape = 20, size = 4, color = "red")
         }
     } 
@@ -50,7 +52,8 @@ create_violin_plot_album_danceability <- function(query = NULL, artist_id = NULL
               ggplot2::theme_bw() +
               ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5), 
                     axis.text.x = ggplot2::element_blank(), 
-                    axis.ticks.x = ggplot2::element_blank()
+                    axis.ticks.x = ggplot2::element_blank(),
+                    legend.text = ggplot2::element_text(size = 20)
                     ) + 
               ggplot2::stat_summary(fun.data = "mean_cl_normal", geom = "point", shape = 20, size = 4, color = "red")
     }
